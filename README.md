@@ -2,7 +2,8 @@ SauceDemo Automation Framework 🚀
 A streamlined QA framework for functional and regression testing of e-commerce platforms.
 
 📊 Live Test Report
-> **Latest Execution Result:** [🔗 View Allure Report](https://Prajwal-Joshi.github.io/SauceDemo-Automation-Framework/)
+> **Latest Execution Result:**
+[🔗 View Allure Report](https://Prajwal-Joshi.github.io/SauceDemo-Automation-Framework/)
 
 🛠 Tech Stack
 Engine: Java 17 + Playwright
