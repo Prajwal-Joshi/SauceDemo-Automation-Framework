@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+# Added permissions required to publish the report to GitHub Pages
+permissions:
+  contents: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -22,13 +26,33 @@ jobs:
           cache: maven
 
       - name: Run 16 Scripts with Maven
-        # This triggers 'mvn clean test' using your master XML
         run: mvn clean test -DsuiteXmlFile=testng_master.xml -Dheadless=true
 
-      - name: Upload Allure Results
+      # 1. Get previous history to show trends (Pass/Fail over time)
+      - name: Get Allure history
+        uses: actions/checkout@v4
         if: always()
-        uses: actions/upload-artifact@v4
+        continue-on-error: true
         with:
-          name: allure-results
-          path: target/allure-results
-          retention-days: 1
+          ref: gh-pages
+          path: gh-pages
+
+      # 2. Convert JSON files in target/allure-results into an HTML Report
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        id: allure-report
+        with:
+          allure_results: target/allure-results
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
+
+      # 3. Publish the report to the gh-pages branch
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-history
+          publish_branch: gh-pages
