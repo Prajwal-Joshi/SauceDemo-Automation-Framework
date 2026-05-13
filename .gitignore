@@ -1,0 +1,15 @@
+# Compiled files
+target/
+*.class
+
+# IntelliJ files
+.idea/
+*.iml
+out/
+
+# Log files
+*.log
+
+# Allure Reports (these are generated locally)
+allure-results/
+allure-report/

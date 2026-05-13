@@ -1,0 +1,19 @@
+# Compiled files
+target/
+*.class
+
+# IDE specific
+.idea/
+*.iml
+.settings/
+.classpath
+.project
+
+# Reports and Logs
+test-output/
+allure-results/
+logs/
+*.log
+
+# Sensitive Data (Crucial for QA Security)
+src/test/resources/config.properties
