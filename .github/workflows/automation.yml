@@ -23,7 +23,7 @@ jobs:
 
       - name: Run 16 Scripts with Maven
         # This triggers 'mvn clean test' using your master XML
-        run: mvn clean test -DsuiteXmlFile=testng_master.xml
+        run: mvn clean test -DsuiteXmlFile=testng_master.xml -Dheadless=true
 
       - name: Upload Allure Results
         if: always()
