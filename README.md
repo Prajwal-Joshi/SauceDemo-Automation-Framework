@@ -6,7 +6,7 @@ A streamlined QA framework for functional and regression testing of e-commerce p
 [🔗 View Allure Report](https://Prajwal-Joshi.github.io/SauceDemo-Automation-Framework/)
 
 🛠 Tech Stack
-Engine: Java 17 + Playwright
+Engine: Java 17 + Selenium 4.2
 
 Build & Runner: Maven + TestNG
 
